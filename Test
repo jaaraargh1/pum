@@ -1,0 +1,63 @@
+import junit.framework.*;
+import junit.framework.TestCase;
+
+public class PNRclassTest extends TestCase {
+	private PNRclass abc;
+
+	public PNRclassTest(String name) {
+		super(name);
+	}
+
+	protected void setUp() {
+		abc = new PNRclass();
+	}
+
+	public void testPNRlength() {
+		String PNR = "6408233234";
+		assertTrue(PNRclass.isLengthValid(PNR));
+		PNR = "91910202434";
+		assertFalse(PNRclass.isLengthValid(PNR));
+
+//1. A test case for checking the accuracy of checksum calculation
+
+	}
+
+	public void testGetDate() {
+		String PNR = "6408233234";
+		String expected = "6408233234";
+
+		assertEquals(expected, PNRclass.getDate(PNR));
+
+	}
+
+	public void testGetMonth() {
+		String PNR = "6408233234";
+		String expected = "08";
+
+		assertEquals(expected, PNRclass.getMonth(PNR));
+		assertNotSame(expected, PNRclass.getMonth(PNR));
+
+	}
+
+	public void testGetYear() {
+		String PNR = "6408233234";
+		String expected = "64";
+
+		assertEquals(expected, PNRclass.getYear(PNR));
+		assertNotSame(expected, PNRclass.getYear(PNR));
+	}
+
+	public void testgetSex() {
+		String PNR = "9102024057";
+		assertEquals("it's a male", PNRclass.getSex(PNR));
+	}
+
+	public void testcheckSumTest() {
+		int expected = 40; 
+		String PNR = "6408233234";
+		System.out.println(PNR);
+		System.out.println(PNRclass.checkSum(PNR));
+		assertEquals(expected, 40);
+ 
+	}
+}
